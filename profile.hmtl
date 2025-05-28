@@ -1,4 +1,4 @@
-<?php
+<?html
 session_start();
 if (!isset($_SESSION['username'])) {
     header("Location: login.html");
@@ -34,22 +34,22 @@ $program = $_SESSION['program'] ?? '';
       <h2><i class="fas fa-graduation-cap"></i> Student Portal</h2>
     </div>
     <ul>
-      <li><a href="dashboard.php"><i class="fas fa-chart-line"></i> Dashboard</a></li>
-      <li><a href="profile.php" class="active"><i class="fas fa-user-circle"></i> Profile</a></li>
-      <li><a href="courses.php"><i class="fas fa-book"></i> Courses</a></li>
-      <li><a href="grades.php"><i class="fas fa-file-alt"></i> Grades</a></li>
-      <li><a href="announcements.php"><i class="fas fa-bullhorn"></i> Announcements</a></li>
-      <li><a href="resources.php"><i class="fas fa-folder"></i> Resources</a></li>
-      <li><a href="calendar.php"><i class="fas fa-calendar-week"></i> Calendar</a></li>
-      <li><a href="Index1.php"><i class="fas fa-home"></i> Home</a></li>
-      <li><a href="programs1.php"><i class="fas fa-list-alt"></i> Tracks</a></li>
-      <li><a href="About Us1.php"><i class="fas fa-info-circle"></i> About</a></li>
-      <li><a href="Contact1.php"><i class="fas fa-phone"></i> Contact</a></li>
+      <li><a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+      <li><a href="profile.html" class="active"><i class="fas fa-user-circle"></i> Profile</a></li>
+      <li><a href="courses.html"><i class="fas fa-book"></i> Courses</a></li>
+      <li><a href="grades.html"><i class="fas fa-file-alt"></i> Grades</a></li>
+      <li><a href="announcements.html"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+      <li><a href="resources.html"><i class="fas fa-folder"></i> Resources</a></li>
+      <li><a href="calendar.html"><i class="fas fa-calendar-week"></i> Calendar</a></li>
+      <li><a href="Index1.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="programs1.html"><i class="fas fa-list-alt"></i> Tracks</a></li>
+      <li><a href="About Us1.html"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="Contact1.html"><i class="fas fa-phone"></i> Contact</a></li>
     </ul>
   </div>
   <div class="main">
     <header>
-      <div id="greeting">Welcome, <?php echo htmlspecialchars($fullname); ?>!</div>
+      <div id="greeting">Welcome, <?html echo htmlspecialchars($fullname); ?>!</div>
       <form method="post" style="display:inline;">
         <button type="submit" name="logout" class="logout-button">
           <i class="fas fa-sign-out-alt"></i> Log Out
@@ -63,19 +63,19 @@ $program = $_SESSION['program'] ?? '';
           <form id="profile-form" method="post" action="#">
             <div class="form-group">
               <label for="studentid">Student ID</label>
-              <input type="text" id="studentid" name="studentid" value="<?php echo htmlspecialchars($studentid); ?>" readonly>
+              <input type="text" id="studentid" name="studentid" value="<?html echo htmlspecialchars($studentid); ?>" readonly>
             </div>
             <div class="form-group">
               <label for="fullname">Full Name</label>
-              <input type="text" id="fullname" name="fullname" value="<?php echo htmlspecialchars($fullname); ?>" readonly>
+              <input type="text" id="fullname" name="fullname" value="<?html echo htmlspecialchars($fullname); ?>" readonly>
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" readonly>
+              <input type="email" id="email" name="email" value="<?html echo htmlspecialchars($email); ?>" readonly>
             </div>
             <div class="form-group">
               <label for="program">Program</label>
-              <input type="text" id="program" name="program" value="<?php echo htmlspecialchars($program); ?>" readonly>
+              <input type="text" id="program" name="program" value="<?html echo htmlspecialchars($program); ?>" readonly>
             </div>
           </form>
         </div>
