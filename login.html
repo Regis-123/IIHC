@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - IIHC SCHOOL</title>
+
+  <!-- Stylesheets -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="login.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="pics/favicon.ico" type="image/x-icon">
+</head>
+<body class="d-flex justify-content-center align-items-center min-vh-100">
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="visually-hidden focusable">Skip to main content</a>
+
+  <!-- Logo / School Name -->
+  <div class="iih">
+    <a href="Index1.php" style="text-decoration: none;">
+      <h1>IIHC</h1>
+      <h2>SCHOOL</h2>
+    </a>
+  </div>
+
+  <!-- Login Box -->
+  <div class="login-box" id="main-content">
+    <h2>LOG IN TO YOUR ACCOUNT</h2>
+    <form action="login.php" method="POST">
+      <div class="mb-3">
+        <label for="username" class="form-label visually-hidden">Username</label>
+        <input type="text" id="username" name="USERNAME" class="form-control" placeholder="USERNAME" required />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label visually-hidden">Password</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="PASSWORD" required />
+      </div>
+      <button type="submit" class="btn btn-primary">LOGIN</button>
+    </form>
+
+    <!-- Registration Link -->
+    <div class="registration-link mt-3">
+      <span>Don't have an account?</span> <a href="registration.php">Sign up</a>
+    </div>
+  </div>
+
+  <!-- Dark Mode Toggle Button -->
+  <button id="dark-mode-toggle" class="btn btn-outline-secondary position-fixed top-0 end-0 m-3">☀</button>
+
+  <!-- Scripts -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Dark mode toggle
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      body.classList.add('dark-mode');
+      darkModeToggle.innerHTML = '🔆';
+    }
+
+    darkModeToggle.addEventListener('click', function () {
+      body.classList.toggle('dark-mode');
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'enabled');
+        darkModeToggle.innerHTML = '🔆';
+      } else {
+        localStorage.setItem('darkMode', 'disabled');
+        darkModeToggle.innerHTML = '☀';
+      }
+    });
+  </script>
+
+  <!-- Error alert -->
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('error')) {
+      alert("Invalid username or password!");
+    }
+  </script>
+</body>
+</html>

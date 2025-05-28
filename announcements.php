@@ -1,0 +1,177 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: login.html");
+    exit();
+}
+if (isset($_POST['logout'])) {
+    session_destroy();
+    header("Location: login.html");
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Announcements | Student Portal</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <link rel="icon" href="pics/favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <button id="sidebar-toggle" aria-label="Toggle sidebar"><i class="fas fa-bars"></i></button>
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2><i class="fas fa-graduation-cap"></i> Student Portal</h2>
+    </div>
+    <ul>
+      <li><a href="dashboard.php"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+      <li><a href="profile.php"><i class="fas fa-user-circle"></i> Profile</a></li>
+      <li><a href="courses.php"><i class="fas fa-book"></i> Courses</a></li>
+      <li><a href="grades.php"><i class="fas fa-file-alt"></i> Grades</a></li>
+      <li><a href="announcements.php" class="active"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+      <li><a href="resources.php"><i class="fas fa-folder"></i> Resources</a></li>
+      <li><a href="calendar.php"><i class="fas fa-calendar-week"></i> Calendar</a></li>
+      <li><a href="Index1.php"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="programs1.php"><i class="fas fa-list-alt"></i> Tracks</a></li>
+      <li><a href="About Us1.php"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="Contact1.php"><i class="fas fa-phone"></i> Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="main">
+    <header>
+      <div id="greeting">Welcome!</div>
+      <button onclick="logout()" class="logout-button">
+        <i class="fas fa-sign-out-alt"></i> Log Out
+      </button>
+    </header>
+
+    <div class="dashboard-content">
+      <section id="announcements">
+        <div class="section-header">
+          <h2><i class="fas fa-bullhorn"></i> Announcements</h2>
+          <button class="refresh-button" onclick="refreshAnnouncements()">
+            <i class="fas fa-sync-alt"></i> Refresh
+          </button>
+        </div>
+        <div id="announcement-list" class="card">
+          <div class="announcement">
+            <div class="announcement-header">
+              <h3>Important Announcement: School Holiday</h3>
+              <span class="announcement-priority high">High Priority</span>
+            </div>
+            <p>
+              Please be advised that classes will be suspended on
+              <strong>December 8, 2023</strong>, in observance of a special school event.
+              Enjoy your extended break!
+            </p>
+            <div class="announcement-footer">
+              <p class="announcement-date"><i class="far fa-calendar-alt"></i> December 1, 2023</p>
+              <button class="save-button" onclick="saveAnnouncement(this)"><i class="far fa-bookmark"></i> Save</button>
+            </div>
+          </div>
+          <div class="announcement">
+            <div class="announcement-header">
+              <h3>Deadline Reminder: Research Papers</h3>
+              <span class="announcement-priority medium">Medium Priority</span>
+            </div>
+            <p>
+              A friendly reminder that the deadline for the submission of all research papers is on
+              <strong>December 15, 2023</strong>. Please ensure all requirements are met.
+            </p>
+            <div class="announcement-footer">
+              <p class="announcement-date"><i class="far fa-calendar-alt"></i> November 25, 2023</p>
+              <button class="save-button" onclick="saveAnnouncement(this)"><i class="far fa-bookmark"></i> Save</button>
+            </div>
+          </div>
+          <div class="announcement">
+            <div class="announcement-header">
+              <h3>New Library Hours</h3>
+              <span class="announcement-priority low">Low Priority</span>
+            </div>
+            <p>
+              Starting next week, the library will extend its operating hours until 9 PM on weekdays.
+              Check the library website for more details.
+            </p>
+            <div class="announcement-footer">
+              <p class="announcement-date"><i class="far fa-calendar-alt"></i> November 20, 2023</p>
+              <button class="save-button" onclick="saveAnnouncement(this)"><i class="far fa-bookmark"></i> Save</button>
+            </div>
+          </div>
+        </div>
+        <div class="announcement-actions">
+          <button class="filter-button active" onclick="filterAnnouncements('all')">All</button>
+          <button class="filter-button" onclick="filterAnnouncements('high')">High Priority</button>
+          <button class="filter-button" onclick="filterAnnouncements('medium')">Medium Priority</button>
+          <button class="filter-button" onclick="filterAnnouncements('low')">Low Priority</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    // Get logged-in user
+    const user = localStorage.getItem("loggedInUser") || "Student";
+    document.getElementById("greeting").textContent = `Welcome, ${user}!`;
+
+    // Log out
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "login.html";
+    }
+
+    // Toggle sidebar for mobile
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const sidebar = document.getElementById('sidebar');
+    if (sidebarToggle && sidebar) {
+      sidebarToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+      });
+    }
+
+    // Announcement functions
+    function refreshAnnouncements() {
+      // In a real app, this would fetch new announcements from the server
+      alert("Announcements refreshed!");
+    }
+
+    function saveAnnouncement(button) {
+      const announcement = button.closest('.announcement');
+      const title = announcement.querySelector('h3').textContent;
+      const content = announcement.querySelector('p').textContent;
+      const date = announcement.querySelector('.announcement-date').textContent;
+      
+      // Save to localStorage
+      let savedAnnouncements = JSON.parse(localStorage.getItem('savedAnnouncements')) || [];
+      savedAnnouncements.push({ title, content, date });
+      localStorage.setItem('savedAnnouncements', JSON.stringify(savedAnnouncements));
+      
+      button.innerHTML = '<i class="fas fa-check"></i> Saved';
+      button.disabled = true;
+    }
+
+    function filterAnnouncements(priority) {
+      const announcements = document.querySelectorAll('.announcement');
+      const filterButtons = document.querySelectorAll('.filter-button');
+      
+      // Update active button
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      // Filter announcements
+      announcements.forEach(announcement => {
+        if (priority === 'all') {
+          announcement.style.display = 'block';
+        } else {
+          const announcementPriority = announcement.querySelector('.announcement-priority').className.includes(priority);
+          announcement.style.display = announcementPriority ? 'block' : 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

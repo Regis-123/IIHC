@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IIHC SCHOOL Programs</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="icon" href="pics/favicon.ico" type="image/x-icon" />
+
+  <style>
+    /* Highlight style for search matches */
+    .search-highlight {
+      background-color: yellow;
+      font-weight: bold;
+    }
+    /* Back to top button styles (optional) */
+    #back-to-top {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      display: none;
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      z-index: 9999;
+    }
+    #back-to-top.show {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main-content" class="visually-hidden focusable">Skip to main content</a>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="Index1.php">
+        <img src="pics/LOGO.jpg" alt="IIHC Logo" class="me-2" style="height: 40px;" />
+        IIHC SCHOOL
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="Index1.php">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="About Us1.php">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="programs1.php">Academic</a></li>
+          <li class="nav-item"><a class="nav-link" href="Contact1.php">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="Directory.php">Directory</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="admissionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Admission
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="admissionDropdown">
+              <li><a class="dropdown-item" href="registration.php">Registration</a></li>
+              <li><a class="dropdown-item" href="login.php">Login</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="admission1.php">Admission Info</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex ms-lg-3" id="navbar-search-form" role="search">
+          <label for="navbar-search-input" class="visually-hidden">Search</label>
+          <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search" id="navbar-search-input" name="query" />
+          <button class="btn btn-outline-primary" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+        <div id="search-results-container" class="position-absolute bg-white p-3 shadow rounded mt-1 d-none" style="z-index: 1000; width: 300px; right: 15px;"></div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="programs-header" data-aos="fade-down">
+    <div class="container text-center">
+      <h1>Chart Your Path to Success!</h1>
+      <p class="lead">Explore the dynamic Senior High School Tracks and Strands at IIHC SCHOOL designed to shape your future.</p>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="section-padding" data-aos="fade-up">
+      <div class="container">
+        <h2 class="tracks-title mb-5" data-aos="fade-right">Our Exciting Senior High School Tracks</h2>
+
+        <!-- Academic Track -->
+        <div class="program-section mb-5" data-aos="fade-up" data-aos-delay="100">
+          <h3>Academic Track: Paving the Way to Higher Education</h3>
+          <div class="row g-4">
+            <!-- ABM -->
+            <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+              <div class="card h-100" id="abm-section">
+                <img src="pics/h6.jpg" class="card-img-top" alt="Students discussing in an ABM class" style="height: 200px; object-fit: cover;" />
+                <div class="card-body text-center">
+                  <i class="fas fa-chart-line program-icon"></i>
+                  <h5 class="card-title" id="abm-title">Accountancy, Business, and Management (ABM)</h5>
+                  <p class="card-text">Dive into the world of business! The ABM strand is your gateway to careers in finance, marketing, entrepreneurship, and more. Learn the fundamentals of business operations, financial planning, and strategic thinking.</p>
+                  <ul class="card-text text-start ps-3 list-unstyled" style="font-size: 0.95rem;">
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Master financial principles and accounting basics.</li>
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Develop essential management and marketing skills.</li>
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Explore the dynamics of the local and global economy.</li>
+                  </ul>
+                  <a href="#" class="btn btn-outline-primary mt-auto">Discover ABM</a>
+                </div>
+              </div>
+            </div>
+            <!-- HUMSS -->
+            <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="250">
+              <div class="card h-100" id="humss-section">
+                <img src="pics/h8.jpg" class="card-img-top" alt="Students reading books in a library, representing HUMSS" style="height: 200px; object-fit: cover;" />
+                <div class="card-body text-center">
+                  <i class="fas fa-book-open program-icon"></i>
+                  <h5 class="card-title" id="humss-title">Humanities and Social Sciences (HUMSS)</h5>
+                  <p class="card-text">Explore human society and culture. HUMSS is perfect if you're passionate about understanding people, history, politics, and communication. Prepare for college degrees in law, education, journalism, and social work.</p>
+                  <ul class="card-text text-start ps-3 list-unstyled" style="font-size: 0.95rem;">
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Analyze societal issues and human behavior.</li>
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Enhance your communication and critical thinking abilities.</li>
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Engage with literature, history, and philosophical concepts.</li>
+                  </ul>
+                  <a href="#" class="btn btn-outline-primary mt-auto">Explore HUMSS</a>
+                </div>
+              </div>
+            </div>
+            <!-- STEM -->
+            <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
+              <div class="card h-100" id="stem-section">
+                <img src="pics/h9.jpg" class="card-img-top" alt="Students working on a science experiment, representing STEM" style="height: 200px; object-fit: cover;" />
+                <div class="card-body text-center">
+                  <i class="fas fa-flask program-icon"></i>
+                  <h5 class="card-title" id="stem-title">Science, Technology, Engineering, and Mathematics (STEM)</h5>
+                  <p class="card-text">Innovate and discover! The STEM strand is designed for curious minds interested in science, technology, engineering, and mathematics. It's the ideal preparation for college degrees in these high-demand fields.</p>
+                  <ul class="card-text text-start ps-3 list-unstyled" style="font-size: 0.95rem;">
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Build a strong foundation in science and math.</li>
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Develop problem-solving and analytical skills.</li>
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Get ready for exciting careers in technology and innovation.</li>
+                  </ul>
+                  <a href="#" class="btn btn-outline-primary mt-auto">Learn About STEM</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TVL Track -->
+        <div class="program-section" data-aos="fade-up" data-aos-delay="200">
+          <h3>Technical-Vocational-Livelihood (TVL) Track: Skills for Immediate Employment</h3>
+          <div class="row g-4 justify-content-center">
+            <!-- ICT -->
+            <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="350">
+              <div class="card h-100" id="ict-section">
+                <img src="pics/h7.jpg" class="card-img-top" alt="Student working on a computer, representing ICT strand" style="height: 200px; object-fit: cover;" />
+                <div class="card-body text-center">
+                  <i class="fas fa-laptop-code program-icon"></i>
+                  <h5 class="card-title" id="ict-title">Information and Communications Technology (ICT)</h5>
+                  <p class="card-text">Step into the digital future! The ICT strand equips you with practical skills in computer programming, web development, and network servicing, preparing you for a fast-paced career in tech.</p>
+                  <ul class="card-text text-start ps-3 list-unstyled" style="font-size: 0.95rem;">
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Gain hands-on experience in coding and software development.</li>
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Learn to build and maintain computer systems and networks.</li>
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Prepare for TESDA National Certificates for immediate job opportunities.</li>
+                  </ul>
+                  <a href="#" class="btn btn-outline-primary mt-auto">Discover ICT</a>
+                </div>
+              </div>
+            </div>
+            <!-- Culinary Arts -->
+            <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="400">
+              <div class="card h-100" id="culinary-section">
+                <img src="pics/h5.jpg" class="card-img-top" alt="Student plating food in a kitchen, representing Culinary Arts" style="height: 200px; object-fit: cover;" />
+                <div class="card-body text-center">
+                  <i class="fas fa-utensils program-icon"></i>
+                  <h5 class="card-title" id="culinary-title">Culinary Arts</h5>
+                  <p class="card-text">Unleash your inner chef! The Culinary Arts strand provides comprehensive training in food preparation, cooking techniques, and kitchen management, opening doors to exciting careers in the hospitality industry.</p>
+                  <ul class="card-text text-start ps-3 list-unstyled" style="font-size: 0.95rem;">
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Master essential cooking and baking skills.</li>
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Learn about food safety and kitchen operations.</li>
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Gain practical experience for a career in restaurants or catering.</li>
+                  </ul>
+                  <a href="#" class="btn btn-outline-primary mt-auto">Explore Culinary Arts</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <!-- IIHC College Info -->
+        <div class="col-md-4 mb-4">
+          <h3>IIHC COLLEGE</h3>
+          <p>Providing quality senior high school education...</p>
+        </div>
+        <!-- Quick Links -->
+        <div class="col-md-4 mb-4">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="Index1.php">Home</a></li>
+            <li><a href="About Us1.php">About</a></li>
+            <li><a class="active" href="programs1.php">Academic</a></li>
+              <li><a href="Contact1.php">Contact</a></li>
+            <li><a href="Directory.php">Directory</a></li>
+            <li><a href="admission1.php">Admission Info</a></li>
+            <li><a href="registration.php">Registration</a></li>
+            <li><a href="login.php">Login</a></li>
+        
+          </ul>
+        </div>
+        <!-- Contact Info -->
+        <div class="col-md-4 mb-4">
+          <h3>Contact Info</h3>
+          <address>
+            <p><i class="fas fa-map-marker-alt fa-fw me-2"></i>Blk 4 Lot 6 La Forteza Subdivision Camarin Brgy 175 District 1, Philippines</p>
+            <p><i class="fas fa-phone-alt fa-fw me-2"></i>0967 892 9232</p>
+            <p><i class="fas fa-envelope fa-fw me-2"></i> <a href="mailto:iihclaforteza@gmail.com">iihclaforteza@gmail.com</a></p>
+          </address>
+        </div>
+      </div>
+      <hr />
+      <div class="d-flex justify-content-between align-items-center flex-column flex-md-row">
+        <p class="mb-2 mb-md-0">© 2025 by IIH COLLEGE. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#" class="footer-link" data-bs-toggle="modal" data-bs-target="#privacyPolicyModal">Privacy Policy</a> |
+          <a href="#">Data Policy</a> |
+          <a href="#">Legal Disclaimers</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Privacy Policy Modal -->
+  <div class="modal fade privacy-popup" id="privacyPolicyModal" tabindex="-1" aria-labelledby="privacyPolicyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="privacyPolicyModalLabel">
+            <i class="fas fa-lock me-2"></i> Privacy Notice
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>In accordance with the Data Privacy Act of 2012 (RA 10173), IIHC SCHOOL would like to obtain your consent for:</p>
+          <ul class="privacy-list mb-3">
+            <li>Collection and processing of student information</li>
+            <li>Use of educational records and academic data</li>
+            <li>Website analytics and performance tracking</li>
+            <li>School communications and updates</li>
+          </ul>
+          <p>Our website uses necessary cookies to enhance your browsing experience and help us improve our services.</p>
+          <div class="contact-info mt-3">
+            <p class="mb-2"><small>For privacy concerns, contact our Data Protection Officer:</small></p>
+            <p class="mb-1"><small><i class="fas fa-envelope me-2"></i>iihclaforteza@gmail.com</small></p>
+            <p class="mb-0"><small><i class="fas fa-phone me-2"></i>0967 892 9232</small></p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary w-100" data-bs-dismiss="modal">I ACCEPT</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Initialize AOS
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false
+      });
+
+      // Navbar scroll effect
+      window.addEventListener('scroll', function () {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+
+      // Back to Top Button
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          backToTop.classList.add('show');
+        } else {
+          backToTop.classList.remove('show');
+        }
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+
+  <!-- Search Functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const searchForm = document.getElementById('navbar-search-form');
+      const searchInput = document.getElementById('navbar-search-input');
+      const resultsContainer = document.getElementById('search-results-container');
+      let debounceTimer;
+      const debounceDelay = 250; // milliseconds
+
+      // Remove previous highlights
+      function removeHighlights() {
+        document.querySelectorAll('.search-highlight').forEach(el => {
+          const parent = el.parentNode;
+          parent.replaceChild(document.createTextNode(el.textContent), el);
+          parent.normalize();
+        });
+      }
+
+      // Perform search and highlight
+      function performSearch(query) {
+        removeHighlights();
+        resultsContainer.innerHTML = '';
+        resultsContainer.classList.add('d-none');
+
+        const trimmedQuery = query.trim();
+        if (trimmedQuery.length < 3) return; // optional: only search for 3+ chars
+
+        const searchableElements = document.querySelectorAll(
+          'p, li, h1, h2, h3, h4, h5, h6, td, th, a, span, .card-text'
+        );
+        const results = [];
+        let firstMatchEl = null;
+
+        searchableElements.forEach(element => {
+          const text = element.textContent;
+          const lowerText = text.toLowerCase();
+          const lowerQuery = trimmedQuery.toLowerCase();
+
+          if (lowerText.includes(lowerQuery)) {
+            // Highlight all matches
+            const regex = new RegExp(`(${trimmedQuery})`, 'gi');
+            const originalHTML = element.innerHTML;
+            const newHTML = originalHTML.replace(regex, '<span class="search-highlight">$1</span>');
+            element.innerHTML = newHTML;
+
+            results.push({ element: element, text: text });
+            if (!firstMatchEl) {
+              firstMatchEl = element;
+            }
+          }
+        });
+
+        if (results.length > 0) {
+          // Show results summary
+          resultsContainer.innerHTML = `
+            <div class="small text-muted mb-2">${results.length} results found</div>
+            <div class="search-results-list">
+              ${results.slice(0, 5).map((res, index) => `
+                <div class="search-result-item" data-scroll-to="${res.element.id}">
+                  Match ${index + 1}
+                </div>
+              `).join('')}
+            </div>
+            ${results.length > 5 ? `<div class="small text-center mt-2">+ ${results.length - 5} more results</div>` : ''}
+          `;
+          resultsContainer.classList.remove('d-none');
+
+          // Scroll to first match
+          if (firstMatchEl) {
+            firstMatchEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        } else {
+          resultsContainer.innerHTML = '<div class="text-muted p-2">No results found</div>';
+          resultsContainer.classList.remove('d-none');
+        }
+      }
+
+      // Event listeners
+      document.getElementById('navbar-search-form').addEventListener('submit', e => {
+        e.preventDefault();
+        performSearch(searchInput.value);
+      });
+
+      searchInput.addEventListener('input', () => {
+        clearTimeout(debounceTimer);
+        if (searchInput.value.length > 2) {
+          debounceTimer = setTimeout(() => performSearch(searchInput.value), debounceDelay);
+        } else {
+          removeHighlights();
+          resultsContainer.classList.add('d-none');
+        }
+      });
+
+      resultsContainer.addEventListener('click', e => {
+        const item = e.target.closest('.search-result-item');
+        if (item) {
+          const targetId = item.getAttribute('data-scroll-to');
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          resultsContainer.classList.add('d-none');
+        }
+      });
+
+      document.addEventListener('click', e => {
+        if (!document.getElementById('navbar-search-form').contains(e.target) && !resultsContainer.contains(e.target)) {
+          resultsContainer.classList.add('d-none');
+        }
+      });
+
+      // Check URL param 'q' for pre-search
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get('q');
+      if (q) {
+        searchInput.value = q;
+        performSearch(q);
+      }
+    });
+  </script>
+</body>
+</html>

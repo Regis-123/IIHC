@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="IIHC School - Empowering future leaders through quality senior high school education with STEM, HUMSS, and ABM tracks">
+        <title>IIHC School - Homepage</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link rel="icon" href="pics/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <a href="#main-content" class="visually-hidden focusable">Skip to main content</a>
+        <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+                <div class="container">
+                    <a class="navbar-brand d-flex align-items-center" href="Index1.php">
+                        <img src="pics/LOGO.jpg" alt="IIHC School Logo" class="me-2">
+                        IIHC SCHOOL
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link active" href="Index1.php">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="About Us1.php">About</a></li>
+                            <li class="nav-item"><a class="nav-link " href="programs1.php">Academic</a></li>
+                            <li class="nav-item"><a class="nav-link" href="Contact1.php">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="Directory.php">Directory</a></li>
+
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="admissionDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                    Admission
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="admissionDropdown">
+                                    <li><a class="dropdown-item" href="registration.php">Registration</a></li>
+                                    <li><a class="dropdown-item" href="login.php">Login</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="admission1.php">Admission Info</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                                                <form class="d-flex ms-lg-3" id="navbar-search-form">
+                                <label for="navbar-search-input" class="visually-hidden">Search</label>
+                                <input class="form-control me-2" type="search" 
+                                    placeholder="Search..." 
+                                    aria-label="Search" 
+                                    id="navbar-search-input"
+                                    name="query">
+                                <button class="btn btn-outline-primary" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </form>
+        <div id="search-results-container" class="position-absolute bg-white p-3 shadow rounded mt-1 d-none" style="z-index: 1000; width: 300px; right: 15px;"></div>
+                                </button>
+                            </div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero" aria-label="School campus slideshow">
+                <div class="hero-slide active" style="background-image: url('pics/CG1.jpg');" role="img" aria-label="Students in classroom"></div>
+                <div class="hero-slide" style="background-image: url('pics/CG2.jpg');" role="img" aria-label="Science laboratory"></div>
+                <div class="hero-slide" style="background-image: url('pics/CG3.jpg');" role="img" aria-label="School building exterior"></div>
+                <div class="container hero-content" data-aos="fade-up">
+                    <h1>Empowering Future Leaders</h1>
+                    <p class="lead">Preparing students for college, career, and beyond with a rigorous and engaging senior high school experience.</p>
+                    <a href="programs1.php" class="btn btn-primary btn-lg mt-3">Explore Our Tracks</a>
+                </div>
+                <div class="slider-nav">
+                    <button class="prev-slide" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+                    <button class="next-slide" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <section id="learn-more" class="programs-highlight section-padding">
+                <div class="container">
+                    <h2 data-aos="fade-up">Academic Tracks</h2>
+                    <p class="lead text-center mb-5" data-aos="fade-up" data-aos-delay="100">Choose a track that aligns with your interests and future goals.</p>
+                    <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+                        <div class="col" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card card-colorful card-stem h-100">
+                                <div class="card-body">
+                                    <img src="pics/Stem.jpg" class="track-icon mb-3">
+                                    <h3 class="card-title h5">STEM</h3>
+                                    <p class="card-text">For students inclined towards careers in science, engineering, technology, and mathematics. This track offers specialized subjects and hands-on activities.</p>
+                                    <a href="programs1.html#stem" class="btn btn-outline-primary btn-sm mt-3">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col" data-aos="fade-up" data-aos-delay="300">
+                            <div class="card card-colorful card-humss h-100">
+                                <div class="card-body">
+                                    <img src="pics/Hums.jpg" alt="HUMSS Icon" class="track-icon mb-3">
+                                    <h3 class="card-title h5">HUMSS</h3>
+                                    <p class="card-text">Ideal for students interested in social sciences, literature, philosophy, history, and communication. This track develops critical thinking and communication skills.</p>
+                                    <a href="programs1.html#humss" class="btn btn-outline-primary btn-sm mt-3">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col" data-aos="fade-up" data-aos-delay="400">
+                            <div class="card card-colorful card-abm h-100">
+                                <div class="card-body">
+                                    <img src="pics/Abm.png" alt="ABM Icon" class="track-icon mb-3">
+                                    <h3 class="card-title h5">ABM</h3>
+                                    <p class="card-text">Designed for students planning to pursue careers in business, accounting, finance, and entrepreneurship. This track provides a strong foundation in business principles.</p>
+                                    <a href="programs1.html#abm" class="btn btn-outline-primary btn-sm mt-3">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="what-our-students" class="programs-highlight section-padding">
+                <div class="container">
+                    <h2 data-aos="fade-up">What Our Students Say</h2>
+                    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-8">
+                                        <blockquote class="blockquote text-center">
+                                            <p>"The STEM track at IIHC has provided me with a strong foundation in science and mathematics, preparing me well for my dream of studying engineering in college."</p>
+                                            <footer class="blockquote-footer mt-3">Mary Delgado, <cite>Grade 12 STEM</cite></footer>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-8">
+                                        <blockquote class="blockquote text-center">
+                                            <p>"I've really enjoyed the discussions and projects in the HUMSS track. It has helped me develop my critical thinking and communication skills."</p>
+                                            <footer class="blockquote-footer mt-3">Nomer Landag, <cite>Grade 11 HUMSS</cite></footer>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-8">
+                                        <blockquote class="blockquote text-center">
+                                            <p>"The ABM program gave me practical business knowledge that I'm already applying in my family's small business."</p>
+                                            <footer class="blockquote-footer mt-3">Juan Santos, <cite>Grade 12 ABM</cite></footer>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-8">
+                                        <blockquote class="blockquote text-center">
+                                            <p>"The teachers at IIHC go above and beyond to support students in achieving their academic goals."</p>
+                                            <footer class="blockquote-footer mt-3">Maria Reyes, <cite>Grade 11 STEM</cite></footer>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="our-facilities" class="programs-highlight section-padding" data-aos="fade-up">
+                <div class="container">
+                    <h2>Our Facilities</h2>
+                    <p class="facilities-description text-center mb-5" style="color: var(--dark-text);">Our senior high school students benefit from modern facilities including well-equipped science laboratories, advanced computer labs with internet access, a comprehensive library with research resources, and dedicated spaces for arts and specialized subjects.</p>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <img src="pics/r1.jpg" alt="Modern science laboratory at IIHC School" class="img-fluid rounded-3 shadow-lg facility-img">
+                        </div>
+                        <div class="col-md-6">
+                            <img src="pics/f2.jpg" alt="Computer lab" class="img-fluid rounded-3 shadow-lg facility-img">
+                        </div>
+                        <div class="col-md-6">
+                            <img src="pics/f.jpg" alt="Library" class="img-fluid rounded-3 shadow-lg facility-img">
+                        </div>
+                        <div class="col-md-6">
+                            <img src="pics/f1.jpg" alt="Multipurpose Hall" class="img-fluid rounded-3 shadow-lg facility-img">
+                        </div>
+                    </div>
+                </div>
+            </section>
+    <section class="stats section-padding" aria-label="School achievements" data-aos="fade-up" style="background-color: var(--soft-orange);">
+        <div class="container">
+            <h2 class="section-gradient-heading">Our Achievements</h2>
+            <div class="row text-center">
+                <div class="col-md-4 stats-item">
+                    <i class="fas fa-graduation-cap"></i> <h3>90%</h3>
+                    <p>College Admission Rate</p>
+                </div>
+                <div class="col-md-4 stats-item">
+                    <i class="fas fa-users"></i> <h3>5+</h3> <p>Extracurricular Clubs & Organizations</p>
+                </div>
+                <div class="col-md-4 stats-item">
+                    <i class="fas fa-award"></i> <h3>20+</h3> <p>Scholarships Awarded Last Year</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery section-padding" aria-label="Campus life gallery" data-aos="fade-up" style="background-color: var(--soft-purple);">
+        <div class="container">
+            <h2 class="section-gradient-heading">Campus Life Gallery</h2>
+            <div class="gallery-grid">
+                <img src="pics/CG1.jpg" alt="Students engaged in classroom learning" loading="lazy" data-aos="zoom-in">
+                <img src="pics/CG2.jpg" alt="Hands-on experiment in science lab" loading="lazy" data-aos="zoom-in" data-aos-delay="100">
+                <img src="pics/CG3.jpg" alt="Group study session in library" loading="lazy" data-aos="zoom-in" data-aos-delay="200">
+                <img src="pics/cg4.jpg" alt="Students collaborating on project" loading="lazy" data-aos="zoom-in" data-aos-delay="300">
+                <img src="pics/cg5.jpg" alt="Basketball team competition" loading="lazy" data-aos="zoom-in" data-aos-delay="400">
+                <img src="pics/cg6.jpg" alt="Graduates throwing caps in celebration" loading="lazy" data-aos="zoom-in" data-aos-delay="500">
+                <img src="pics/hg1.jpg" alt="Students participating in school event" loading="lazy" data-aos="zoom-in">
+                <img src="pics/hg2.jpg" alt="Classroom discussion session" loading="lazy" data-aos="zoom-in" data-aos-delay="100">
+                <img src="pics/h1.jpg" alt="Student art exhibition" loading="lazy" data-aos="zoom-in" data-aos-delay="200">
+                <img src="pics/hg3.jpg" alt="Science fair project demonstration" loading="lazy" data-aos="zoom-in" data-aos-delay="300">
+            </div>
+        </div>
+    </section>
+
+
+        <section class="contact-form section-padding" data-aos="fade-up" style="background-color: var(--soft-teal);">
+        <div class="container">
+            <h2 class="section-gradient-heading mb-4">INQUIRY</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <form action="/submit-form" method="POST" class="p-4 rounded-3 shadow-lg" style="background-color: white; transition: transform 0.3s ease;">
+                        <div class="mb-3">
+                            <label for="name" class="form-label" style="color: var(--primary-color); font-weight: 500;">Your Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required style="border: 2px solid var(--soft-teal); transition: border-color 0.3s ease;">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label" style="color: var(--primary-color); font-weight: 500;">Your Email Address</label>
+                            <input type="email" class="form-control" id="email" name="email" required style="border: 2px solid var(--soft-teal); transition: border-color 0.3s ease;">
+                        </div>
+                        <div class="">
+                            <label for="interest" class="form-label" style="color: var(--primary-color); font-weight: 500;">I am interested in:</label>
+                            <select class="form-select" id="interest" name="interest" style="border: 2px solid var(--soft-teal); transition: border-color 0.3s ease;">
+                                <option value="general">General Inquiry</option>
+                                <option value="admission">Senior High School Admission</option>
+                                <option value="programs">Academic Programs</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg" style="transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">Send Inquiry</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links list-unstyled"> <li>
+                            <a href="Index1.php">Home</a></li>
+                            <li><a href="About Us1.php">About</a></li>
+                            <li><a class="active" href="programs1.php">Academic</a></li>
+                            <li><a href="Contact1.php">Contact</a></li>
+                            <li><a href="Directory.php">Directory</a></li>
+                            <li><a href="admission1.php">Admission Info</a></li>
+                            <li><a href="registration.php">Registration</a></li>
+                            <li><a href="login.php">Login</a></li>       
+                        </ul>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <h3>Contact Information</h3>
+                        <address>
+                            <p><i class="fas fa-map-marker-alt fa-fw me-2"></i> Blk 4 Lot 6 La Forteza Subdivision Camarin Brgy 175 District 1, Philippines</p>
+                            <p><i class="fas fa-phone fa-fw me-2"></i> <a href="tel:+09678929232">0967 892 9232</a></p>
+                            <p><i class="fas fa-envelope fa-fw me-2"></i> <a href="mailto:iihclaforteza@gmail.com">iihclaforteza@gmail.com</a></p>
+                        </address>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Connect With Us</h3>
+                        <div class="social-media-links">
+                            <a href="https://www.facebook.com/IIHCLaFortezaOfficialPage" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-4"> <div class="row">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p>&copy; <span id="current-year"></span> IIHC SCHOOL. All rights reserved.</p> </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#privacyPolicyModal">Privacy Policy</a> 
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Privacy Policy Modal -->
+<div class="modal fade privacy-popup" id="privacyPolicyModal" tabindex="-1" aria-labelledby="privacyPolicyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="privacyPolicyModalLabel">
+                    <i class="fas fa-lock me-2"></i> Privacy Notice
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>In accordance with the Data Privacy Act of 2012 (RA 10173), IIHC SCHOOL would like to obtain your consent for:</p>
+                
+                <ul class="privacy-list mb-3">
+                    <li>Collection and processing of student information</li>
+                    <li>Use of educational records and academic data</li>
+                    <li>Website analytics and performance tracking</li>
+                    <li>School communications and updates</li>
+                </ul>
+                
+                <p>Our website uses necessary cookies to enhance your browsing experience and help us improve our services. <a href="privacy-policy.php" class="text-primary"></a></p>
+
+                <div class="contact-info mt-3">
+                    <p class="mb-2"><small>For privacy concerns, contact our Data Protection Officer:</small></p>
+                    <p class="mb-1"><small><i class="fas fa-envelope me-2"></i>iihclaforteza@gmail.com</small></p>
+                    <p class="mb-0"><small><i class="fas fa-phone me-2"></i>0967 892 9232</small></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary w-100" data-bs-dismiss="modal">I ACCEPT</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+        <script>
+            // Initialize AOS animation library
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true, // Only animate once
+                mirror: false // Do not repeat animations on scroll up
+            });
+
+            // Hero slider functionality
+            const slides = document.querySelectorAll('.hero-slide');
+            const prevBtn = document.querySelector('.prev-slide');
+            const nextBtn = document.querySelector('.next-slide');
+            let currentIndex = 0;
+            let intervalId;
+
+            function showSlide(index) {
+                slides.forEach((slide) => slide.classList.remove('active'));
+                slides[index].classList.add('active');
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                showSlide(currentIndex);
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                showSlide(currentIndex);
+            }
+
+            function startAutomaticSlider() {
+                intervalId = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+            }
+
+            function stopAutomaticSlider() {
+                clearInterval(intervalId);
+            }
+
+            // Initial display
+            showSlide(currentIndex);
+            startAutomaticSlider();
+
+            // Event listeners for navigation buttons (if they exist)
+            if (prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', () => {
+                    stopAutomaticSlider();
+                    prevSlide();
+                    startAutomaticSlider(); // Restart timer after manual navigation
+                });
+                nextBtn.addEventListener('click', () => {
+                    stopAutomaticSlider();
+                    nextSlide();
+                    startAutomaticSlider(); // Restart timer after manual navigation
+                });
+            }
+
+        
+            // Highlight current page in navbar
+            document.querySelectorAll('.nav-link').forEach(link => {
+                // Use window.location.pathname for more robust matching
+                const linkPath = new URL(link.href).pathname;
+                const currentPath = window.location.pathname;
+
+                // Simple check: does the current path end with the link path?
+                // This handles cases like /Index1.html vs /folder/Index1.html
+                if (currentPath.endsWith(linkPath) || (currentPath === '/' && linkPath === '/Index1.php')) {
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                } else {
+                    link.classList.remove('active'); // Ensure other links are not active
+                    link.removeAttribute('aria-current');
+                }
+            });
+
+
+            // Back to Top Button
+            const backToTopButton = document.getElementById('back-to-top');
+            const scrollThreshold = 300; // Pixels scrolled before showing button
+
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > scrollThreshold) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+            });
+
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Update copyright year dynamically
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Privacy Policy Modal functionality
+document.addEventListener('DOMContentLoaded', () => {
+    // Show when Privacy Policy link is clicked
+    document.querySelectorAll('[data-bs-target="#privacyPolicyModal"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const privacyModal = new bootstrap.Modal(document.getElementById('privacyPolicyModal'));
+            privacyModal.show();
+        });
+    });
+
+    // Handle modal cleanup when closing
+    document.getElementById('privacyPolicyModal').addEventListener('hidden.bs.modal', function () {
+        document.body.classList.remove('modal-open');
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+        const backdrop = document.querySelector('.modal-backdrop');
+        if (backdrop) {
+            backdrop.remove();
+        }
+    });
+});
+        </script>
+
+  <!-- Search Functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const searchForm = document.getElementById('navbar-search-form');
+      const searchInput = document.getElementById('navbar-search-input');
+      const resultsContainer = document.getElementById('search-results-container');
+      let debounceTimer;
+      const debounceDelay = 250; // milliseconds
+
+      // Remove previous highlights
+      function removeHighlights() {
+        document.querySelectorAll('.search-highlight').forEach(el => {
+          const parent = el.parentNode;
+          parent.replaceChild(document.createTextNode(el.textContent), el);
+          parent.normalize();
+        });
+      }
+
+      // Perform search and highlight
+      function performSearch(query) {
+        removeHighlights();
+        resultsContainer.innerHTML = '';
+        resultsContainer.classList.add('d-none');
+
+        const trimmedQuery = query.trim();
+        if (trimmedQuery.length < 3) return; // optional: only search for 3+ chars
+
+        const searchableElements = document.querySelectorAll(
+          'p, li, h1, h2, h3, h4, h5, h6, td, th, a, span, .card-text'
+        );
+        const results = [];
+        let firstMatchEl = null;
+
+        searchableElements.forEach(element => {
+          const text = element.textContent;
+          const lowerText = text.toLowerCase();
+          const lowerQuery = trimmedQuery.toLowerCase();
+
+          if (lowerText.includes(lowerQuery)) {
+            // Highlight all matches
+            const regex = new RegExp(`(${trimmedQuery})`, 'gi');
+            const originalHTML = element.innerHTML;
+            const newHTML = originalHTML.replace(regex, '<span class="search-highlight">$1</span>');
+            element.innerHTML = newHTML;
+
+            results.push({ element: element, text: text });
+            if (!firstMatchEl) {
+              firstMatchEl = element;
+            }
+          }
+        });
+
+        if (results.length > 0) {
+          // Show results summary
+          resultsContainer.innerHTML = `
+            <div class="small text-muted mb-2">${results.length} results found</div>
+            <div class="search-results-list">
+              ${results.slice(0, 5).map((res, index) => `
+                <div class="search-result-item" data-scroll-to="${res.element.id}">
+                  Match ${index + 1}
+                </div>
+              `).join('')}
+            </div>
+            ${results.length > 5 ? `<div class="small text-center mt-2">+ ${results.length - 5} more results</div>` : ''}
+          `;
+          resultsContainer.classList.remove('d-none');
+
+          // Scroll to first match
+          if (firstMatchEl) {
+            firstMatchEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        } else {
+          resultsContainer.innerHTML = '<div class="text-muted p-2">No results found</div>';
+          resultsContainer.classList.remove('d-none');
+        }
+      }
+
+      // Event listeners
+      document.getElementById('navbar-search-form').addEventListener('submit', e => {
+        e.preventDefault();
+        performSearch(searchInput.value);
+      });
+
+      searchInput.addEventListener('input', () => {
+        clearTimeout(debounceTimer);
+        if (searchInput.value.length > 2) {
+          debounceTimer = setTimeout(() => performSearch(searchInput.value), debounceDelay);
+        } else {
+          removeHighlights();
+          resultsContainer.classList.add('d-none');
+        }
+      });
+
+      resultsContainer.addEventListener('click', e => {
+        const item = e.target.closest('.search-result-item');
+        if (item) {
+          const targetId = item.getAttribute('data-scroll-to');
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          resultsContainer.classList.add('d-none');
+        }
+      });
+
+      document.addEventListener('click', e => {
+        if (!document.getElementById('navbar-search-form').contains(e.target) && !resultsContainer.contains(e.target)) {
+          resultsContainer.classList.add('d-none');
+        }
+      });
+
+      // Check URL param 'q' for pre-search
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get('q');
+      if (q) {
+        searchInput.value = q;
+        performSearch(q);
+      }
+    });
+  </script>
+</body>
+</html>

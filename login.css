@@ -1,0 +1,286 @@
+/* Import fonts - Ensure these are consistent with your style.css */
+/* Ideally, import fonts only once in your main style.css */
+/* @import url('https://fonts.googleapis.com/css2?family=Bungee+Tint&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Bungee+Tint&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap'); */
+/* Assuming Roboto and Montserrat are already imported in style.css */
+
+
+/* Use variables from style.css for colors and backgrounds */
+/* Make sure your style.css file is linked BEFORE login.css in your HTML */
+/* Example variables from style.css: */
+/*
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #10b981;
+  --accent-color: #f59e0b;
+  --dark-blue: #1e40af;
+  --text-color: #374151;
+  --heading-color: #111827;
+  --background-light: #f9fafb;
+  --background-secondary: #f3f4f6;
+  --card-background: #ffffff;
+  --dark-mode-bg: #1a1a1a;
+  --dark-mode-text: #e0e0e0;
+  --dark-mode-heading: #ffffff;
+  --dark-mode-card-bg: #2a2a2a;
+  --dark-mode-border: #444444;
+  --white: #ffffff;
+  --border-color: #dee2e6;
+  --primary-color-rgb: 37, 99, 235;
+}
+*/
+
+/* Define specific red colors for the login page elements */
+:root {
+    --login-box-bg-light: rgba(220, 53, 70, 0.616); /* A slightly muted red for background with transparency */
+    --login-box-bg-dark: rgba(128, 26, 35, 0.9); /* Darker red for dark mode */
+    --iih-text-light: #c2656e; /* Bootstrap's danger red */
+    --iih-text-dark: #c25454; /* Lighter red for visibility in dark mode */
+    --login-text-light: var(--white); /* White text on red background */
+    --login-text-dark: var(--white); /* White text on dark red background */
+    border-radius: 90%;
+}
+
+
+body {
+    /* Use background from style.css or keep a consistent image */
+    background-image: url('pics/bglogin.webp'); /* Ensure this image exists */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; /* Keep background fixed */
+    font-family: 'Roboto', sans-serif; /* Use font from style.css */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text-color); /* Use text color from style.css */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Add transition for dark mode */
+}
+
+/* Dark mode body background */
+body.dark-mode {
+    background-color: var(--dark-mode-bg);
+    color: var(--dark-mode-text);
+    
+}
+
+
+/* Styling for the logo/school name section */
+.iih {
+    position: absolute;
+    top: 20px; /* Adjust as needed */
+    left: 20px; /* Adjust as needed */
+    text-align: left; /* Align left */
+    z-index: 10; /* Ensure it's above other content */
+}
+
+.iih h1 {
+    font-family: 'Montserrat', sans-serif; /* Use font from style.css */
+    font-size: 2.5rem; /* Adjust size */
+    margin: 0;
+    color: var(--iih-text-light); /* Set IIHC text color to red (light mode) */
+    font-weight: 700;
+    transition: color 0.3s ease; /* Add transition */
+}
+
+.iih h2 {
+    font-family: 'Roboto', sans-serif; /* Use font from style.css */
+    font-size: 1.2rem; /* Adjust size */
+    margin: 0;
+    color: var(--iih-text-light); /* Set SCHOOL text color to red (light mode) */
+    font-weight: 400;
+     transition: color 0.3s ease; /* Add transition */
+}
+
+/* Dark mode for logo text */
+body.dark-mode .iih h1,
+body.dark-mode .iih h2 {
+    color: var(--iih-text-dark); /* Set IIHC text color to red (dark mode) */
+}
+
+
+/* Styling for the login box - Now Red */
+.login-box {
+    background: var(--login-box-bg-light); /* Use the red background color */
+    width: 100%;
+    max-width: 350px;
+    padding: 40px;
+    border-radius: 8px; /* Use consistent border-radius */
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); /* Adjust shadow for red background */
+    position: relative;
+    opacity: 1;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Add transition */
+}
+
+/* Dark mode for login box */
+body.dark-mode .login-box {
+    background-color: var(--login-box-bg-dark); /* Use the darker red background */
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.15); /* Adjust shadow for dark red background */
+    border: none; /* Remove border if using solid red background */
+}
+
+
+.login-box h2 {
+    color: var(--login-text-light); /* Heading color on red background (light mode) */
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+     transition: color 0.3s ease; /* Add transition */
+}
+
+/* Dark mode for login box heading */
+body.dark-mode .login-box h2 {
+    color: var(--login-text-dark); /* Heading color on dark red background (dark mode) */
+}
+
+
+/* Styling for input fields - Keep consistent with site style */
+.login-box input {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color); /* Use border color from style.css */
+    border-radius: 20px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    color: var(--text-color); /* Use text color */
+    background-color: var(--white); /* Use white background for inputs */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Add transition */
+}
+
+.login-box input:focus {
+     border-color: var(--primary-color);
+     box-shadow: 0 0 0 0.25rem rgba(var(--primary-color-rgb), 0.25);
+     outline: none;
+}
+
+/* Dark mode for input fields */
+body.dark-mode .login-box input {
+    background-color: #3a3a3a;
+    color: var(--dark-mode-text);
+    border-color: var(--dark-mode-border);
+}
+body.dark-mode .login-box input::placeholder {
+    color: #888;
+}
+body.dark-mode .login-box input:focus {
+     border-color: var(--primary-color);
+     box-shadow: 0 0 0 0.25rem rgba(var(--primary-color-rgb), 0.25);
+}
+
+
+/* Styling for the login button - Keep consistent with primary button styles */
+.login-box button {
+    width: 100%;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px;
+    background: var(--primary-color); /* Use primary color from style.css */
+    color: var(--white); /* Use white text */
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    margin-top: 10px;
+}
+
+.login-box button:hover {
+    background: var(--dark-blue);
+    opacity: 0.9;
+}
+
+/* Dark mode for login button */
+body.dark-mode .login-box button {
+     background: var(--primary-color);
+     color: var(--white);
+}
+body.dark-mode .login-box button:hover {
+    background: var(--dark-blue);
+}
+
+
+/* Styling for the registration link section */
+.registration-link {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--login-text-light); /* Text color on red background (light mode) */
+     transition: color 0.3s ease; /* Add transition */
+}
+
+/* Dark mode for registration link text */
+body.dark-mode .registration-link {
+    color: var(--login-text-dark); /* Text color on dark red background (dark mode) */
+}
+
+.registration-link a {
+    color: var(--white); /* White color for the link itself */
+    text-decoration: underline; /* Always underline the link */
+    font-weight: bold; /* Make the link bold */
+    transition: color 0.3s ease; /* Add transition */
+}
+
+.registration-link a:hover {
+    color: rgba(255, 255, 255, 0.8); /* Slightly transparent white on hover */
+    text-decoration: underline;
+}
+
+/* Dark mode for registration link */
+body.dark-mode .registration-link a {
+     color: var(--white); /* White color for the link itself */
+}
+body.dark-mode .registration-link a:hover {
+     color: rgba(255, 255, 255, 0.8); /* Keep transparent white on hover */
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .login-box {
+        padding: 30px 20px;
+    }
+
+    .login-box h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Accessibility: Style for Skip to main content link */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.focusable:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    display: inline-block;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    z-index: 10000;
+    text-decoration: none;
+}
+
+
+#dark-mode-toggle {
+     position: fixed;
+     top: 20px;
+     right: 20px;
+     z-index: 10;
+}

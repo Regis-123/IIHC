@@ -1,0 +1,160 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: login.html");
+    exit();
+}
+if (isset($_POST['logout'])) {
+    session_destroy();
+    header("Location: login.html");
+    exit();
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Portal Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <link rel="icon" href="pics/favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <button id="sidebar-toggle" aria-label="Toggle sidebar"><i class="fas fa-bars"></i></button>
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2><i class="fas fa-graduation-cap"></i> Student Portal</h2>
+    </div>
+    <ul>
+      <li>
+      <a href="dashboard.php" class="active"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+      <li><a href="profile.php"><i class="fas fa-user-circle"></i> Profile</a></li>
+      <li><a href="courses.php"><i class="fas fa-book"></i> Courses</a></li>
+      <li><a href="grades.php"><i class="fas fa-file-alt"></i> Grades</a></li>
+      <li><a href="announcements.php"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+      <li><a href="resources.php"><i class="fas fa-folder"></i> Resources</a></li>
+      <li><a href="calendar.php"><i class="fas fa-calendar-week"></i> Calendar</a></li>
+      <li><a href="Index1.php"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="programs1.php"><i class="fas fa-list-alt"></i> Tracks</a></li>
+      <li><a href="About Us1.php"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="Contact1.php"><i class="fas fa-phone"></i> Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="main">
+    <header>
+      <div id="greeting">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</div>
+      <form method="post" style="display:inline;">
+        <button type="submit" name="logout" class="logout-button">
+          <i class="fas fa-sign-out-alt"></i> Log Out
+        </button>
+      </form>
+    </header>
+
+    <div class="dashboard-content">
+      <section id="main-dashboard">
+        <div class="dashboard">
+          <div class="card">
+            <h2>Monthly Enrollments</h2>
+            <canvas id="barChart"></canvas>
+          </div>
+          <div class="card">
+            <h2>Track Distribution</h2>
+            <canvas id="pieChart"></canvas>
+          </div>
+          <div class="card">
+            <h2>Summary</h2>
+            <ul>
+              <li>Total Enrolled: <strong>182</strong></li>
+              <li>New This Month: <strong>43</strong></li>
+              <li>Target: <strong>250</strong></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- Other SPA sections remain for reference, but navigation is now via links -->
+      <section id="profile" class="hidden">
+        <h2><i class="fas fa-user-circle"></i> Student Profile</h2>
+        <div id="profile-details"></div>
+        <button onclick="editProfile()">Edit Profile</button>
+      </section>
+      <section id="courses" class="hidden">
+        <h2><i class="fas fa-book"></i> My Courses</h2>
+        <div id="course-list"></div>
+      </section>
+      <section id="grades" class="hidden">
+        <h2><i class="fas fa-file-alt"></i> Grades</h2>
+        <div id="grade-list"></div>
+      </section>
+      <section id="announcements" class="hidden">
+        <h2><i class="fas fa-bullhorn"></i> Announcements</h2>
+        <div id="announcement-list"></div>
+      </section>
+      <section id="resources" class="hidden">
+        <h2><i class="fas fa-folder"></i> Resources</h2>
+        <div id="resource-list"></div>
+      </section>
+      <section id="calendar" class="hidden">
+        <h2><i class="fas fa-calendar-week"></i> Calendar</h2>
+        <div id="calendar-view"></div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+ 
+    // Chart Data
+    const barCtx = document.getElementById('barChart').getContext('2d');
+    new Chart(barCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        datasets: [{
+          label: 'Enrollments',
+          data: [26, 23, 29, 30, 22, 20, 32],
+          backgroundColor: '#6366f1'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
+
+    const pieCtx = document.getElementById('pieChart').getContext('2d');
+    new Chart(pieCtx, {
+      type: 'pie',
+      data: {
+        labels: ['GAS', 'HUMSS', 'STEM', 'ABM', 'TVL'],
+        datasets: [{
+          data: [40, 35, 30, 35, 42],
+          backgroundColor: ['#3b82f6', '#facc15', '#ef4444', '#00ff00', '#ff8000']
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+
+    // Sidebar toggle
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+      });
+      document.addEventListener('click', (e) => {
+        if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+          sidebar.classList.remove('open');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: login.html");
+    exit();
+}
+if (isset($_POST['logout'])) {
+    session_destroy();
+    header("Location: login.html");
+    exit();
+}
+
+// Example: If you stored more info in session during login, use them here.
+// Otherwise, just display the username.
+$studentid = $_SESSION['studentid'] ?? 'STU' . $_SESSION['user_id'] ?? '';
+$fullname = $_SESSION['fullname'] ?? $_SESSION['username'];
+$email = $_SESSION['email'] ?? 'student@email.com';
+$program = $_SESSION['program'] ?? '';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile | Student Portal</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" href="pics/favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <button id="sidebar-toggle" aria-label="Toggle sidebar"><i class="fas fa-bars"></i></button>
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2><i class="fas fa-graduation-cap"></i> Student Portal</h2>
+    </div>
+    <ul>
+      <li><a href="dashboard.php"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+      <li><a href="profile.php" class="active"><i class="fas fa-user-circle"></i> Profile</a></li>
+      <li><a href="courses.php"><i class="fas fa-book"></i> Courses</a></li>
+      <li><a href="grades.php"><i class="fas fa-file-alt"></i> Grades</a></li>
+      <li><a href="announcements.php"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+      <li><a href="resources.php"><i class="fas fa-folder"></i> Resources</a></li>
+      <li><a href="calendar.php"><i class="fas fa-calendar-week"></i> Calendar</a></li>
+      <li><a href="Index1.php"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="programs1.php"><i class="fas fa-list-alt"></i> Tracks</a></li>
+      <li><a href="About Us1.php"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="Contact1.php"><i class="fas fa-phone"></i> Contact</a></li>
+    </ul>
+  </div>
+  <div class="main">
+    <header>
+      <div id="greeting">Welcome, <?php echo htmlspecialchars($fullname); ?>!</div>
+      <form method="post" style="display:inline;">
+        <button type="submit" name="logout" class="logout-button">
+          <i class="fas fa-sign-out-alt"></i> Log Out
+        </button>
+      </form>
+    </header>
+    <div class="dashboard-content">
+      <section id="profile-section">
+        <h2><i class="fas fa-user-circle"></i> My Profile</h2>
+        <div class="card">
+          <form id="profile-form" method="post" action="#">
+            <div class="form-group">
+              <label for="studentid">Student ID</label>
+              <input type="text" id="studentid" name="studentid" value="<?php echo htmlspecialchars($studentid); ?>" readonly>
+            </div>
+            <div class="form-group">
+              <label for="fullname">Full Name</label>
+              <input type="text" id="fullname" name="fullname" value="<?php echo htmlspecialchars($fullname); ?>" readonly>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" readonly>
+            </div>
+            <div class="form-group">
+              <label for="program">Program</label>
+              <input type="text" id="program" name="program" value="<?php echo htmlspecialchars($program); ?>" readonly>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script>
+    // Sidebar toggle
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+      });
+      document.addEventListener('click', (e) => {
+        if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+          sidebar.classList.remove('open');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

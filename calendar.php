@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calendar | Student Portal</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" />
+      <link rel="icon" href="pics/favicon.ico" type="image/x-icon">
+  <style>
+    /* Inline minimal styling for delete button in upcoming events */
+    .delete-btn {
+      background: #dc2626;
+      color: white;
+      border: none;
+      margin-left: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .upcoming-event {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+    }
+    .event-date {
+      font-weight: bold;
+      margin-right: 10px;
+      white-space: nowrap;
+    }
+    .event-title {
+      flex-grow: 1;
+    }
+  </style>
+</head>
+<body>
+  <button id="sidebar-toggle" aria-label="Toggle sidebar"><i class="fas fa-bars"></i></button>
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2><i class="fas fa-graduation-cap"></i> Student Portal</h2>
+    </div>
+    <ul>
+      <li><a href="dashboard.php"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+      <li><a href="profile.php"><i class="fas fa-user-circle"></i> Profile</a></li>
+      <li><a href="courses.php"><i class="fas fa-book"></i> Courses</a></li>
+      <li><a href="grades.php"><i class="fas fa-file-alt"></i> Grades</a></li>
+      <li><a href="announcements.php"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+      <li><a href="resources.php"><i class="fas fa-folder"></i> Resources</a></li>
+      <li><a href="calendar.php" class="active"><i class="fas fa-calendar-week"></i> Calendar</a></li>
+      <li><a href="Index1.php"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="programs1.php"><i class="fas fa-list-alt"></i> Tracks</a></li>
+      <li><a href="About Us1.php"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="Contact1.php"><i class="fas fa-phone"></i> Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="main">
+    <header>
+      <div id="greeting">Welcome!</div>
+      <button onclick="logout()" class="logout-button">
+        <i class="fas fa-sign-out-alt"></i> Log Out
+      </button>
+    </header>
+
+    <div class="dashboard-content">
+      <section id="calendar">
+        <div class="section-header">
+          <h2><i class="fas fa-calendar-week"></i> Academic Calendar</h2>
+          <div class="view-options">
+            <button class="view-button active" onclick="changeView('dayGridMonth', this)">Month</button>
+            <button class="view-button" onclick="changeView('timeGridWeek', this)">Week</button>
+            <button class="view-button" onclick="changeView('timeGridDay', this)">Day</button>
+            <button class="view-button" onclick="changeView('listMonth', this)">List</button>
+            <button onclick="openEventModal()" class="view-button" style="background-color: #10b981; color: white;">Add Event</button>
+          </div>
+        </div>
+
+        <div id="calendar-container" class="card">
+          <div id="calendar-view"></div>
+        </div>
+
+        <div class="upcoming-events">
+          <h3><i class="fas fa-list"></i> Upcoming Events</h3>
+          <div id="upcoming-events-list"></div>
+        </div>
+
+        <!-- Event Modal -->
+        <div
+          id="event-modal"
+          style="
+            display: none;
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1002;
+          "
+        >
+          <h3>Add New Event</h3>
+          <label>Title:</label><br />
+          <input id="event-title" type="text" /><br /><br />
+          <label>Date:</label><br />
+          <input id="event-date" type="date" /><br /><br />
+          <button
+            onclick="addEvent()"
+            style="background-color: #3b82f6; color: white; padding: 5px 10px"
+          >
+            Save
+          </button>
+          <button onclick="closeEventModal()" style="margin-left: 10px">Cancel</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+  <script>
+    // Greet user
+    const user = localStorage.getItem("loggedInUser") || "Student";
+    document.getElementById("greeting").textContent = `Welcome, ${user}!`;
+
+    // Logout function
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "login.html";
+    }
+
+    // Sidebar toggle
+    const sidebarToggle = document.getElementById("sidebar-toggle");
+    const sidebar = document.getElementById("sidebar");
+    if (sidebarToggle && sidebar) {
+      sidebarToggle.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+      });
+    }
+
+    let calendarInstance;
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const calendarEl = document.getElementById("calendar-view");
+      calendarInstance = new FullCalendar.Calendar(calendarEl, {
+        initialView: localStorage.getItem("calendarView") || "dayGridMonth",
+        headerToolbar: false,
+        height: "auto",
+        events: function (fetchInfo, successCallback, failureCallback) {
+          const staticEvents = [
+            {
+              title: "Research Paper Deadline",
+              start: "2025-06-15",
+              color: "#ef4444",
+              extendedProps: {
+                description: "Submit final research papers to your professors",
+                location: "Online submission",
+              },
+            },
+            {
+              title: "School Holiday",
+              start: "2025-06-08",
+              color: "#3b82f6",
+              allDay: true,
+            },
+            {
+              title: "Midterm Exams",
+              start: "2025-06-10",
+              end: "2025-06-14",
+              color: "#f59e0b",
+            },
+            {
+              title: "Library Extended Hours Begin",
+              start: "2025-06-05",
+              color: "#10b981",
+              allDay: true,
+            },
+          ];
+          const storedEvents = JSON.parse(localStorage.getItem("customEvents")) || [];
+          successCallback([...staticEvents, ...storedEvents]);
+        },
+        eventClick: function (info) {
+          const event = info.event;
+          alert(
+            `Event: ${event.title}\nDate: ${event.start.toLocaleDateString()}\n${
+              event.extendedProps.description || ""
+            }`
+          );
+        },
+      });
+      calendarInstance.render();
+
+      renderUpcomingEvents();
+    });
+
+    // Change calendar view and save preference
+    function changeView(view, btn) {
+      localStorage.setItem("calendarView", view);
+      calendarInstance.changeView(view);
+      document.querySelectorAll(".view-button").forEach((b) => b.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+    }
+
+    // Open event modal
+    function openEventModal() {
+      document.getElementById("event-modal").style.display = "block";
+    }
+
+    // Close event modal & clear inputs
+    function closeEventModal() {
+      document.getElementById("event-modal").style.display = "none";
+      document.getElementById("event-title").value = "";
+      document.getElementById("event-date").value = "";
+    }
+
+    // Add new event to calendar & localStorage
+    function addEvent() {
+      const title = document.getElementById("event-title").value.trim();
+      const date = document.getElementById("event-date").value;
+
+      if (!title || !date) {
+        alert("Please provide both title and date.");
+        return;
+      }
+
+      const newEvent = {
+        title,
+        start: date,
+        color: "#6366f1",
+        allDay: true,
+        extendedProps: { isCustom: true },
+      };
+
+      const savedEvents = JSON.parse(localStorage.getItem("customEvents")) || [];
+      savedEvents.push(newEvent);
+      localStorage.setItem("customEvents", JSON.stringify(savedEvents));
+
+      calendarInstance.addEvent(newEvent);
+      closeEventModal();
+      renderUpcomingEvents();
+    }
+
+    // Render upcoming events (next 30 days) with delete option for user events
+    function renderUpcomingEvents() {
+      const events = calendarInstance.getEvents();
+      const now = new Date();
+      const upcoming = events
+        .filter(
+          (event) =>
+            event.start > now &&
+            event.start < new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
+        )
+        .sort((a, b) => a.start - b.start);
+
+      const list = document.getElementById("upcoming-events-list");
+      list.innerHTML = "";
+
+      if (upcoming.length > 0) {
+        upcoming.forEach((event) => {
+          const isCustom = event.extendedProps?.isCustom;
+
+          const el = document.createElement("div");
+          el.className = "upcoming-event";
+          el.innerHTML = `
+            <div class="event-date">${event.start.toLocaleDateString()}</div>
+            <div class="event-title">${event.title}</div>
+            ${
+              isCustom
+                ? `<button class="delete-btn" title="Delete Event">🗑</button>`
+                : ""
+            }
+          `;
+
+          if (isCustom) {
+            el.querySelector(".delete-btn").addEventListener("click", (e) => {
+              e.stopPropagation();
+              if (confirm(`Delete "${event.title}"?`)) {
+                removeEvent(event.title, event.start.toISOString().split("T")[0]);
+                event.remove();
+                renderUpcomingEvents();
+              }
+            });
+          }
+
+          el.addEventListener("click", () => {
+            calendarInstance.changeView("dayGridDay", event.start);
+          });
+
+          list.appendChild(el);
+        });
+      } else {
+        list.innerHTML = "<p>No upcoming events in the next 30 days.</p>";
+      }
+    }
+
+    // Remove a user-added event by title and date from localStorage
+    function removeEvent(title, date) {
+      const events = JSON.parse(localStorage.getItem("customEvents")) || [];
+      const updated = events.filter(
+        (e) => !(e.title === title && e.start === date)
+      );
+      localStorage.setItem("customEvents", JSON.stringify(updated));
+    }
+  </script>
+</body>
+</html>
+
